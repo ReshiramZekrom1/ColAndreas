@@ -76,6 +76,7 @@ AMX_NATIVE_INFO PluginNatives[] =
 	{ "CA_RayCastLineExtraID", ColAndreasNatives::CA_RayCastLineExtraID },
 	{ "CA_RayCastLineID", ColAndreasNatives::CA_RayCastLineID },
 	{ "CA_RayCastLineAngle", ColAndreasNatives::CA_RayCastLineAngle },
+	{ "CA_RayCastLineAngleID", ColAndreasNatives::CA_RayCastLineAngleID },
 	{ "CA_RayCastMultiLine", ColAndreasNatives::CA_RayCastMultiLine },
 	{ "CA_RayCastReflectionVector", ColAndreasNatives::CA_RayCastReflectionVector },
 	{ "CA_RayCastLineNormal", ColAndreasNatives::CA_RayCastLineNormal },
