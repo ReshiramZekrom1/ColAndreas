@@ -46,6 +46,7 @@ public:
 	int performRayTestEx(const btVector3& Start, const btVector3& End, btVector3& Result, btQuaternion& Rotation, btVector3& Position, int32_t& model);
 	int performRayTestAngle(const btVector3& Start, const btVector3& End, btVector3& Result, btScalar& RX, btScalar& RY, btScalar& RZ, int32_t& model);
 	int performRayTestAngleEx(const btVector3& Start, const btVector3& End, btVector3& Result, btScalar& RX, btScalar& RY, btScalar& RZ, btQuaternion& Rotation, btVector3& Position, int32_t& model);
+	int performRayTestAngleID(const btVector3& Start, const btVector3& End, btVector3& Result, btScalar& RX, btScalar& RY, btScalar& RZ, uint16_t& index);
 	int performRayTestAll(const btVector3& Start, const btVector3& End, btAlignedObjectArray < btVector3 >& Result, int ModelIDs[], int size);
 	int performRayTestReflection(const btVector3& Start, const btVector3& End, btVector3& Position, btVector3& Result, int32_t& model);
 	int performRayTestNormal(const btVector3& Start, const btVector3& End, btVector3& Result, btVector3& Normal, int32_t& model);
