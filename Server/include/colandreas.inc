@@ -181,6 +181,25 @@ native CA_RayCastLineAngle(Float:StartX, Float:StartY, Float:StartZ, Float:EndX,
 
 /**--------------------------------------------------------------------------**\
 <summary>
+	CA_RayCastLineAngleID
+</summary>
+<param name="Float:StartX, Float:StartY, Float:StartZ">The beginning point of the ray</param>
+<param name="Float:EndX, Float:EndY, Float:EndZ">The ending point of the ray</param>
+<param name="&Float:x, &Float:y, &Float:z">The point that the ray collided</param>
+<param name="&Float:rx, &Float:ry, &Float:rz">The rotation of the face that the ray collided</param>
+<returns>
+	0 if the ray didn't collide with anything
+	WATER_OBJECT if the ray collided with water
+	The index of the object the ray collided
+</returns>
+<remarks>
+	This only works with objects created with `add` enabled in `CA_CreateObject`, such as the objects created by the "_DC" functions
+</remarks>
+\**--------------------------------------------------------------------------**/
+native CA_RayCastLineAngleID(Float:StartX, Float:StartY, Float:StartZ, Float:EndX, Float:EndY, Float:EndZ, &Float:x, &Float:y, &Float:z, &Float:rx, &Float:ry, &Float:rz);
+
+/**--------------------------------------------------------------------------**\
+<summary>
 	CA_RayCastReflectionVector
 </summary>
 <param name="Float:StartX, Float:StartY, Float:StartZ">The beginning point of the ray</param>
