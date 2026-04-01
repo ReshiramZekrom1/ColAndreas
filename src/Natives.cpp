@@ -245,6 +245,42 @@ cell AMX_NATIVE_CALL ColAndreasNatives::CA_RayCastLineAngleEx(AMX *amx, cell *pa
 	return 0;
 }
 
+cell AMX_NATIVE_CALL ColAndreasNatives::CA_RayCastLineAngleID(AMX *amx, cell *params)
+{
+	cell* addr[6];
+
+	// Adding a small value prevents a potential crash if all values are the same
+	btVector3 Start = btVector3(btScalar(amx_ctof(params[1]) + 0.00001), btScalar(amx_ctof(params[2]) + 0.00001), btScalar(amx_ctof(params[3]) + 0.00001));
+	btVector3 End = btVector3(btScalar(amx_ctof(params[4])), btScalar(amx_ctof(params[5])), btScalar(amx_ctof(params[6])));
+	btVector3 Result;
+	btVector3 Rotation;
+	btScalar RX;
+	btScalar RY;
+	btScalar RZ;
+	uint16_t Index = 0;
+
+	if (collisionWorld->performRayTestAngleID(Start, End, Result, RX, RY, RZ, Index))
+	{
+		//Get our adderesses for the last 6
+		amx_GetAddr(amx, params[7], &addr[0]);
+		amx_GetAddr(amx, params[8], &addr[1]);
+		amx_GetAddr(amx, params[9], &addr[2]);
+		amx_GetAddr(amx, params[10], &addr[3]);
+		amx_GetAddr(amx, params[11], &addr[4]);
+		amx_GetAddr(amx, params[12], &addr[5]);
+
+		*addr[0] = amx_ftoc(Result.getX());
+		*addr[1] = amx_ftoc(Result.getY());
+		*addr[2] = amx_ftoc(Result.getZ());
+		*addr[3] = amx_ftoc(RX);
+		*addr[4] = amx_ftoc(RY);
+		*addr[5] = amx_ftoc(RZ);
+
+		return Index;
+	}
+	return 0;
+}
+
 
 cell AMX_NATIVE_CALL ColAndreasNatives::CA_RayCastMultiLine(AMX *amx, cell *params)
 {
