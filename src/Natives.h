@@ -12,6 +12,7 @@ public:
 	static cell AMX_NATIVE_CALL CA_RayCastLineID(AMX *amx, cell *params);
 	static cell AMX_NATIVE_CALL CA_RayCastMultiLine(AMX *amx, cell *params);
 	static cell AMX_NATIVE_CALL CA_RayCastLineAngle(AMX *amx, cell *params);
+	static cell AMX_NATIVE_CALL CA_RayCastLineAngleID(AMX *amx, cell *params);
 	static cell AMX_NATIVE_CALL CA_RayCastReflectionVector(AMX *amx, cell *params);
 	static cell AMX_NATIVE_CALL CA_RayCastLineNormal(AMX *amx, cell *params);
 	static cell AMX_NATIVE_CALL CA_LoadFromDff(AMX *amx, cell *params);
