@@ -191,6 +191,35 @@ int ColAndreasWorld::performRayTestAngleEx(const btVector3& Start, const btVecto
 }
 
 
+int ColAndreasWorld::performRayTestAngleID(const btVector3& Start, const btVector3& End, btVector3& Result, btScalar& RX, btScalar& RY, btScalar& RZ, uint16_t& index)
+{
+	btCollisionWorld::ClosestRayResultCallback RayCallback(Start, End);
+
+	dynamicsWorld->rayTest(Start, End, RayCallback);
+
+	if (RayCallback.hasHit())
+	{
+		btVector3 Rotation = RayCallback.m_hitNormalWorld;
+		RX = -(asin(Rotation.getY())*RADIAN_TO_DEG);
+		RY = asin(Rotation.getX())*RADIAN_TO_DEG;
+		// I think there is a way to calculate this not sure how yet
+		RZ = 0.0;
+		Result = RayCallback.m_hitPointWorld;
+		ColAndreasObjectTracker* tracker = (ColAndreasObjectTracker*)RayCallback.m_collisionObject->getUserPointer();
+		if(tracker)
+		{
+			index = tracker->realIndex;
+		}
+		else
+		{
+			index = -1;
+		}
+		return 1;
+	}
+	return 0;
+}
+
+
 int ColAndreasWorld::performRayTestAll(const btVector3& Start, const btVector3& End, btAlignedObjectArray < btVector3 >& Result, int ModelIDs[], int size)
 {
 	btCollisionWorld::AllHitsRayResultCallback RayCallback(Start, End);
